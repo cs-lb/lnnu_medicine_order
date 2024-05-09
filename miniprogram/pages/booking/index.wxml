@@ -1,0 +1,18 @@
+<view class="choosetime">
+  <text>选择时间：</text>
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{datetimeArray}}">
+    <view class="chosen">
+      <text>{{datetimeArray[0][multiIndex[0]]}} {{datetimeArray[1][multiIndex[1]]}}</text>
+    </view>
+  </picker>
+</view>
+<!-- <view class="teacher">
+  选择教师：<text>{{teacherInfo.name}}</text>
+</view> -->
+
+<view class="canchoose" hidden="{{show == false}}">
+  状态：<text class="state">{{flag===true ? "可选" : "不可选"}}</text>
+</view>
+<view class="submit">
+  <button type="primary" plain  bindtap="submitAppointment">提交预约</button>
+</view>

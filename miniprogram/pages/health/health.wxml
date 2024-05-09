@@ -1,0 +1,22 @@
+<view class="home"> 
+  <mp-form id="userForm" class="form">
+    <mp-cells>
+      <mp-cell title="姓名" class="nameForm">
+        <input type="nickname" value="{{healthInfo.nickName}}" bindinput="inputChange"/>
+      </mp-cell>
+      <mp-cell title="年龄" class="heightForm">
+        <input type="age" value="{{healthInfo.age}}" bindinput="inputChangeAge"/>
+      </mp-cell>
+      <mp-cell title="身高" class="heightForm">
+        <input type="height" value="{{healthInfo.height}}" bindinput="inputChangeHeight"/>
+      </mp-cell>
+      <mp-cell title="体重" class="heightForm">
+        <input type="weight" value="{{healthInfo.weight}}" bindinput="inputChangeWeight"/>
+      </mp-cell>
+      <mp-cell title="职工号" class="heightForm">
+        <input type="num" value="{{healthInfo.num}}" bindinput="inputChangenum"/>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+  <button bindtap="submitForm" class="sub-btn">{{btnText}}</button>
+</view>
