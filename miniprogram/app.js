@@ -51,6 +51,18 @@ App({
         }
       }
     })
+    wx.cloud.callFunction({
+      name:'haveorder',
+      success:res=>{
+        if(res.result.errCode === 0){
+          this.globalData.orderInfo = res.result.data.orderInfo
+          console.log(res)
+        }
+        else{
+          console.log(res.result.errMsg)
+        }
+      }
+    })
   },
   globalData: {
       user_id:'',

@@ -1,5 +1,5 @@
 {
-  "name": "get",
+  "name": "isorder",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-xlsx": "^0.24.0",
     "wx-server-sdk": "~3.0.1"
   }
 }

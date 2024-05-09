@@ -46,6 +46,7 @@ Page({
       url: `/pages/exampleDetail/index?envId=${envList?.[0]?.envId}&type=getMiniProgramCode`,
     });
   },
+  
   //输入框双向绑定
   inputChange(e){
     this.setData({
@@ -123,16 +124,23 @@ Page({
       btnText:'更新信息'
     })
   },
-  // 跳转到绑定信息页面
+  // 跳转到个人信息界面
   redirectToinfo() {
     wx.navigateTo({
-      url: '/pages/health/health',
-      success: function(res) {
-        console.log('成功跳转到海外就医页面')
-      },
-      fail: function(res) {
-        console.log('跳转到海外就医页面失败')
-      }
+      url: '/pages/health/health'
+    })
+  },
+    // 跳转到后台界面
+  redirectToadmin() {
+    if(app.globalData.userInfo.is_admin != 1){
+      wx.showToast({
+        title: '无权限',
+        icon:'error'
+      })
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/admin/admin',
     })
   }
 });

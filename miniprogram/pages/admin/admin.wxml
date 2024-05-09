@@ -1,0 +1,5 @@
+<!--pages/admin/admin.wxml-->
+<view>
+  {{fileUrl}}
+</view>
+<button bindtap="exportexcel">复制下载链接</button>

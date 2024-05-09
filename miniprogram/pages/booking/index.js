@@ -6,6 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+      orderInfo:{
+        nickName:'',
+        num:'',
+        chooseTime:'',
+      },
       datetimeArray:[[],[]],
       times:['8:00-9:50','10:00-11:50','12:00-13:50','14:00-15:50','16:00-17:50','18:00-19:50','20:00-21:50'],
       multiIndex:[0,0],
@@ -39,21 +44,50 @@ Page({
   },
 
    bindMultiPickerChange(e) {
-		// console.log(e);
+    this.setData({
+      flag:true
+    })
     var arr = e.detail.value;
-    // console.log(arr);  
+    console.log(arr);  
 		var one = this.data.datetimeArray[0][arr[0]];
-		var two = this.data.datetimeArray[1][arr[1]];
-		this.setData({
+    var two = this.data.datetimeArray[1][arr[1]];
+    let chooseTime = one + " " + two
+    this.setData({
 			multiIndex: e.detail.value,
-      chooseTime: one + " " + two,
+      chooseTime: chooseTime,
       show:true
+    })
+    wx.cloud.callFunction({
+      name:'isorder',
+      data:{
+        chooseTime:this.data.chooseTime,
+      },
+      success:res => { 
+        console.log(res.result.data.flag)
+        this.setData({
+          flag:res.result.data.flag
+        })
+      }
     })
     
     // console.log(this.data.chooseTime);
 		// this.getflag(this.data.teacherId,this.data.chooseTime);
   },
   submitAppointment(e){
+    if(this.data.show == false){
+      wx.showToast({
+        title: '还没选择时间',
+        icon:'error'
+      })
+      return
+    }
+    if(!this.data.flag){
+      wx.showToast({
+        title: '该时间不可约',
+        icon:'error'
+      })
+      return
+    }
     console.log(e),
     wx.cloud.callFunction({
       name:'addorder',
@@ -73,10 +107,15 @@ Page({
         if(res.result.errCode === 0){
           //用户注册
           if(!app.globalData.orderInfo){
-            app.globalData.orderInfo = res.result.data.user
+
+            app.globalData.orderInfo.chooseTime = res.result.data.user.chooseTime
+            app.globalData.orderInfo.nickName  = res.result.data.user.nickName
+            app.globalData.orderInfo.num  = res.result.data.user.num
             console.log(app.globalData.orderInfo)
             this.setData({
-              btnText:'更新预约时间'
+              ['orderInfo.nickName']:app.globalData.orderInfo.nickName,
+              ['orderInfo.chooseTime']:app.globalData.orderInfo.chooseTime,
+              ['orderInfo.num']:app.globalData.orderInfo.num,
             })
             wx.showToast({
               title: '预约成功',
@@ -88,6 +127,11 @@ Page({
             app.globalData.orderInfo.chooseTime = res.result.data.user.chooseTime
             app.globalData.orderInfo.nickName  = res.result.data.user.nickName
             app.globalData.orderInfo.num  = res.result.data.user.num
+            this.setData({
+              ['orderInfo.nickName']:app.globalData.orderInfo.nickName,
+              ['orderInfo.chooseTime']:app.globalData.orderInfo.chooseTime,
+              ['orderInfo.num']:app.globalData.orderInfo.num,
+            })
             wx.showToast({
               title: '更新预约信息成功',
               icon:'success'
@@ -127,7 +171,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    console.log(app.globalData.orderInfo)
+    if(!app.globalData.orderInfo){
+      return
+    }
+    this.setData({
+      ['orderInfo.nickName']:app.globalData.orderInfo.nickName,
+      ['orderInfo.chooseTime']:app.globalData.orderInfo.chooseTime,
+      ['orderInfo.num']:app.globalData.orderInfo.num,
+      btnText:'更新信息'
+    })
   },
 
   /**

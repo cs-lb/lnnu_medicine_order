@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "miniprogram-api-promise": "^1.0.4",
-    "weui-miniprogram": "^1.3.1"
+    "weui-miniprogram": "^1.3.1",
+    "xlsx": "^0.18.5"
   }
 }
