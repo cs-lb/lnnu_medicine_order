@@ -16,3 +16,19 @@
 <view class="submit">
   <button type="primary" plain  bindtap="submitAppointment">提交预约</button>
 </view>
+
+<view class="home"> 
+  <mp-form id="userForm" class="form">
+    <mp-cells>
+      <mp-cell title="姓名" class="nameForm">
+        <input type="nickname" disabled="true" value="{{orderInfo.nickName}}"/>
+      </mp-cell>
+      <mp-cell title="职工号" class="heightForm">
+        <input type="age" disabled="true"  value="{{orderInfo.num}}" />
+      </mp-cell>
+      <mp-cell title="预约时间" class="heightForm">
+        <input type="height" disabled="true" value="{{orderInfo.chooseTime}}"/>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+</view>

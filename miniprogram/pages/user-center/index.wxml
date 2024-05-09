@@ -16,10 +16,10 @@
       <button bindtap="submitForm" class="sub-btn">{{btnText}}</button>
     </view>
     <view class="settings_container">
-      <view class="setting_item">
+      <view class="setting_item" bindtap="redirectToinfo">
         <view class="left">
           <image class="setting_icon" src="../../images/icons/setting.svg" />
-          <view class="setting_text" bindtap="redirectToinfo">个人信息设置</view>
+          <view class="setting_text">个人信息设置</view>
         </view>
         <image class="arrow_icon" src="../../images/arrow.svg" />
       </view>
@@ -40,13 +40,13 @@
         </view>
         <image class="arrow_icon" src="../../images/arrow.svg" />
       </view>
-      <!-- <view class="setting_item" bind:tap="gotoWxCodePage">
+      <view class="setting_item" bind:tap="redirectToadmin">
         <view class="left">
           <image class="setting_icon" src="../../images/icons/share.svg" />
-          <view class="setting_text">分享小程序</view>
+          <view class="setting_text">后台管理</view>
         </view>
         <image class="arrow_icon" src="../../images/arrow.svg" />
-      </view> -->
+      </view>
     </view>
   </view>
   <cloud-tip-modal showUploadTipProps="{{showUploadTip}}" />

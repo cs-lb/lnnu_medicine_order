@@ -3,17 +3,8 @@
     "pages/index/index",
     "pages/booking/index",
     "pages/health/health",
-    "pages/goods-list/index",
-    "pages/examples/index",
     "pages/user-center/index",
-    "pages/exampleDetail/index",
-    "pages/deployService/index",
-    "pages/updateRecord/index",
-    "pages/updateRecordResult/index",
-    "pages/updateRecordSuccess/index",
-    "pages/sumRecord/index",
-    "pages/sumRecordResult/index",
-    "pages/web/index"
+    "pages/admin/admin"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

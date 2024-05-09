@@ -1,1 +1,27 @@
 /* pages/booking/index.wxss */
+.container {
+  padding: 20rpx;
+}
+
+.userinfo {
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.health-info {
+  border: 1px solid #ccc;
+  padding: 10rpx;
+}
+
+.title {
+  font-size: 16rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.record {
+  margin-bottom: 10rpx;
+}
+.sub-btn{
+  margin-top: 20px;
+}
