@@ -21,6 +21,27 @@ exports.main = async (event, context) => {
   const db = cloud.database()
   let user //保存用户信息
   let add_result_id = {} //新增结果的系统定义的_id,用来判断最后是新增了用户还是更新原有用户信息
+
+
+  await db.collection('teacher')
+  .where({
+    name:event.nickName,
+    num:event.num
+  })
+  .get()
+  .then(res=>{
+    console.log('获取用户信息操作完成',res)
+    user = res.data[0]
+  })
+  console.log("user",user)
+  if(!user){
+    let result = {}
+    result.errCode = 3
+    return result
+  }
+
+
+
   await db.collection('healthInfo')
   .where({
     openid:wxContext.OPENID
@@ -35,11 +56,10 @@ exports.main = async (event, context) => {
     //构造要添加的数据
     to_add_data = {
       nickName:event.nickName || '', //昵称
-      height:event.height, //身高
-      age:event.age,//年龄
-      weight:event.weight,//体重
+      phone:event.phone,
       num:event.num,//职工号
       openid:wxContext.OPENID, //openid
+      admin:0,
       signTime:new Date() //注册时间
     }
     await db.collection('healthInfo') //连接数据库
@@ -61,9 +81,7 @@ exports.main = async (event, context) => {
     .update({
       data:{
         nickName:event.nickName || '',
-        height:event.height || '',
-        age:event.age || '',
-        weight:event.weight || '',
+        phone:event.age || '',
         num:event.num || ''
       }
     })

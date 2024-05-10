@@ -3,7 +3,7 @@
   <view class="top_bg" />
   <view class="main_content">
     <view class="home"> 
-      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" style="width:100rpx; height: 100rpx;">
+      <!-- <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" style="width:100rpx; height: 100rpx;">
         <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
       </button>
       <mp-form id="userForm" class="form">
@@ -12,17 +12,17 @@
             <input type="nickname" value="{{userInfo.nickName}}" bindinput="inputChange"/>
           </mp-cell>
         </mp-cells>
-      </mp-form>
+      </mp-form> -->
       <button bindtap="submitForm" class="sub-btn">{{btnText}}</button>
     </view>
     <view class="settings_container">
-      <view class="setting_item" bindtap="redirectToinfo">
+      <!-- <view class="setting_item" bindtap="redirectToinfo">
         <view class="left">
           <image class="setting_icon" src="../../images/icons/setting.svg" />
           <view class="setting_text">个人信息设置</view>
         </view>
         <image class="arrow_icon" src="../../images/arrow.svg" />
-      </view>
+      </view> -->
       <!-- <view class="setting_item">
         <view class="left">
           <image class="setting_icon" src="../../images/icons/question.svg" />

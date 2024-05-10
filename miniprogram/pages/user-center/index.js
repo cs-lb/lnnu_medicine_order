@@ -10,7 +10,7 @@ Page({
       avatarUrl:'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
       nickName:''
     },
-    btnText:'注册',
+    btnText:'信息绑定',
     openId: '',
     showUploadTip: false,
   },
@@ -62,39 +62,8 @@ Page({
   },
   //提交表单事件
   submitForm(){
-    console.log(99)
-    wx.cloud.callFunction({
-      name:'wechat_sign',
-      data:{
-        avatarUrl:this.data.userInfo.avatarUrl,
-        nickName:this.data.userInfo.nickName
-      },
-      success:res => {  
-        console.log(res)
-        if(res.result.errCode === 0){
-          //用户注册
-          if(!app.globalData.userInfo){
-            app.globalData.userInfo = res.result.data.user
-            console.log(app.globalData.userInfo)
-            this.setData({
-              btnText:'更新信息'
-            })
-            wx.showToast({
-              title: '注册成功',
-              icon:'success'
-            })
-          }
-          //用户更新信息
-          else{
-            app.globalData.userInfo.avatarUrl = res.result.data.user.avatarUrl
-            app.globalData.userInfo.nickName  = res.result.data.user.nickName
-            wx.showToast({
-              title: '更新信息成功',
-              icon:'success'
-            })
-          }
-        }
-      }
+    wx.navigateTo({
+      url: '/pages/health/health'
     })
   },
   /**
@@ -114,13 +83,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    console.log(app.globalData.userInfo)
-    if(!app.globalData.userInfo){
+    console.log(app.globalData.headlthInfo)
+    if(!app.globalData.headlthInfo){
       return
     }
     this.setData({
-      ['userInfo.avatarUrl']:app.globalData.userInfo.avatarUrl,
-      ['userInfo.nickName']:app.globalData.userInfo.nickName,
       btnText:'更新信息'
     })
   },
@@ -132,7 +99,7 @@ Page({
   },
     // 跳转到后台界面
   redirectToadmin() {
-    if(app.globalData.userInfo.is_admin != 1){
+    if(app.globalData.healthInfo.is_admin != 1){
       wx.showToast({
         title: '无权限',
         icon:'error'

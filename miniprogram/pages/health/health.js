@@ -7,10 +7,8 @@ Page({
   data: {
     healthInfo:{
       nickName:' ',
-      height:' ',
-      age:' ',
-      weight:' ',
-      num:' '
+      num:' ',
+      phone:' '
     },
     btnText:'绑定信息'
   },
@@ -41,6 +39,11 @@ Page({
       ['healthInfo.num']:e.detail.value
     })
   },
+  inputChangephone(e){
+    this.setData({
+      ['healthInfo.phone']:e.detail.value
+    })
+  },
   //提交表单事件
   submitForm(){
     console.log(99)
@@ -53,14 +56,18 @@ Page({
     wx.cloud.callFunction({
       name:'getHealth',
       data:{
-        nickName:this.data.healthInfo.nickName,
-        height:this.data.healthInfo.height,
-        age: this.data.healthInfo.age,
-        weight:this.data.healthInfo.weight,
-        num: this.data.healthInfo.num
+        nickName:this.data.healthInfo.nickName.replace(/\s+/g, ''),
+        num: Number(this.data.healthInfo.num),
+        phone: this.data.healthInfo.phone
       },
       success:res => {  
         console.log(res)
+        if(res.result.errCode === 3){
+          wx.showToast({
+            title: '信息有误',
+            icon:'error'
+          })
+        }
         if(res.result.errCode === 0){
           //用户注册
           if(!app.globalData.healthInfo){
@@ -76,11 +83,9 @@ Page({
           }
           //用户更新信息
           else{
-            app.globalData.healthInfo.height = res.result.data.user.height
             app.globalData.healthInfo.nickName  = res.result.data.user.nickName
-            app.globalData.healthInfo.age  = res.result.data.user.age
+            app.globalData.healthInfo.phonr  = res.result.data.user.phone
             app.globalData.healthInfo.num  = res.result.data.user.num
-            app.globalData.healthInfo.weight  = res.result.data.user.weight
             wx.showToast({
               title: '更新信息成功',
               icon:'success'
@@ -108,14 +113,12 @@ Page({
    */
   onShow() {
     console.log(app.globalData.healthInfo)
-    if(!app.globalData.healthInfo){
+    if(!app.globalData.healthInfo.num){
       return
     }
     this.setData({
-      ['healthInfo.height']:app.globalData.healthInfo.height,
       ['healthInfo.nickName']:app.globalData.healthInfo.nickName,
-      ['healthInfo.age']:app.globalData.healthInfo.age,
-      ['healthInfo.weight']:app.globalData.healthInfo.weight,
+      ['healthInfo.phone']:app.globalData.healthInfo.phone,
       ['healthInfo.num']:app.globalData.healthInfo.num,
       btnText:'更新信息'
     })

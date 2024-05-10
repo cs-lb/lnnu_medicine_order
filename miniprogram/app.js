@@ -67,7 +67,12 @@ App({
   globalData: {
       user_id:'',
       userInfo:null,
-      healthInfo:null,
+      healthInfo:{
+        num:'',
+        phone:'',
+        nickName:'',
+        is_admin:0
+      },
       orderInfo:{
         chooseTime:'',
         nickName:'',
