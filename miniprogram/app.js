@@ -68,6 +68,10 @@ App({
       user_id:'',
       userInfo:null,
       healthInfo:null,
-      orderInfo:null,
+      orderInfo:{
+        chooseTime:'',
+        nickName:'',
+        num:''
+      },
   },
 });

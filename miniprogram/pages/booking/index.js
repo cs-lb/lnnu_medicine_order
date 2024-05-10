@@ -114,7 +114,7 @@ Page({
         }
         if(res.result.errCode === 0){
           //用户注册
-          if(!app.globalData.orderInfo){
+          if(!app.globalData.orderInfo.chooseTime){
 
             app.globalData.orderInfo.chooseTime = res.result.data.user.chooseTime
             app.globalData.orderInfo.nickName  = res.result.data.user.nickName
