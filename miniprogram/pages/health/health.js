@@ -6,13 +6,13 @@ Page({
    */
   data: {
     healthInfo:{
-      nickName:'',
-      height:'',
-      age:'',
-      weight:'',
-      num:''
+      nickName:' ',
+      height:' ',
+      age:' ',
+      weight:' ',
+      num:' '
     },
-    btnText:'绑定患者信息'
+    btnText:'绑定信息'
   },
 
   //输入框双向绑定
@@ -44,6 +44,12 @@ Page({
   //提交表单事件
   submitForm(){
     console.log(99)
+    // if(!this.data.healthInfo.nickName && !this.data.healthInfo.num){
+    //   wx.showToast({
+    //     title: '请绑定个人信息',
+    //     icon:'error'
+    //   })
+    // }
     wx.cloud.callFunction({
       name:'getHealth',
       data:{

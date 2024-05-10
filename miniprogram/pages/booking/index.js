@@ -88,6 +88,14 @@ Page({
       })
       return
     }
+    console.log("app",app.globalData.healthInfo)
+    if(app.globalData.healthInfo === null){
+      wx.showToast({
+        title: '请填写个人信息',
+        icon:'error'
+      })
+      return
+    }
     console.log(e),
     wx.cloud.callFunction({
       name:'addorder',
