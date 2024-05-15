@@ -1,6 +1,10 @@
 {
   "usingComponents": {
   },
-  "navigationBarBackgroundColor": "#f5f5f5",
-  "navigationBarTitleText": "体检预约系统"
+  "backgroundColor": "#f6f6f6",
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#0094ff",
+  "navigationBarTitleText": "体检预约",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true
 }

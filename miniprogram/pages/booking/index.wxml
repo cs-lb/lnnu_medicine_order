@@ -1,25 +1,34 @@
 <view class="choosetime">
-  <text>选择时间：</text>
+  <!-- <text>选择时间：</text> -->
   <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{datetimeArray}}">
-    <view class="chosen">
-      <text>{{datetimeArray[0][multiIndex[0]]}} {{datetimeArray[1][multiIndex[1]]}}</text>
+  <!-- <view><text class="text2" decode="true">&ensp;</text></view> -->
+    <text class="text">选择时间：</text>
+
+    <view class="btn-area" id="buttonContainer">
+    <button  style="width: 100%;border: 0ch;" type="default" plain="true"  >{{datetimeArray[0][multiIndex[0]]}} {{datetimeArray[1][multiIndex[1]]}}</button>
     </view>
+    <!-- <view class="chosen">
+      <text>{{datetimeArray[0][multiIndex[0]]}} {{datetimeArray[1][multiIndex[1]]}}</text>
+    </view> -->
+
   </picker>
 </view>
-<!-- <view class="teacher">
-  选择教师：<text>{{teacherInfo.name}}</text>
-</view> -->
+
 
 <view class="canchoose" hidden="{{show == false}}">
   状态：<text class="state">{{flag===true ? "可选" : "不可选"}}</text>
 </view>
+<!-- <view><text class="text2" decode="true">&ensp;</text></view> -->
 <view class="submit">
   <button type="primary" plain  bindtap="submitAppointment">提交预约</button>
 </view>
 
 <view class="home"> 
+  <text class="text" decode="true">&ensp;</text>
   <mp-form id="userForm" class="form">
     <mp-cells>
+    <mp-cell title="预约记录" style="text-align: center;">
+    </mp-cell> 
       <mp-cell title="姓名" class="nameForm">
         <input type="nickname" disabled="true" value="{{orderInfo.nickName}}"/>
       </mp-cell>

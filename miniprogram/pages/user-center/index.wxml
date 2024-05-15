@@ -1,9 +1,14 @@
 <!-- pages/me/index.wxml -->
 <view class="page_container">
   <view class="top_bg" />
-  <view class="main_content">
-    <view class="home"> 
-      <!-- <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" style="width:100rpx; height: 100rpx;">
+  <view class="main_content" style="position: relative; left: 0rpx; top: 0rpx; width: 750rpx; height: 773rpx; display: block; box-sizing: border-box">
+    <view class="home" style="width: 750rpx; height: 298rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: 0rpx"> 
+        <!-- 在.wxml文件中 -->
+<view class="page-container">
+  <image style="width: 750rpx; height: 310rpx; display: block; box-sizing: border-box; left: 0rpx; top: -114rpx; position: absolute" src="../../images/1.png" mode="widthFix" class="background-image" />
+  <!-- 其他页面内容 -->
+</view>
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" style="width:100rpx; height: 100rpx;">
         <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
       </button>
       <mp-form id="userForm" class="form">
@@ -12,11 +17,11 @@
             <input type="nickname" value="{{userInfo.nickName}}" bindinput="inputChange"/>
           </mp-cell>
         </mp-cells>
-      </mp-form> -->
+      </mp-form>
       <button bindtap="submitForm" class="sub-btn">{{btnText}}</button>
     </view>
-    <view class="settings_container">
-      <!-- <view class="setting_item" bindtap="redirectToinfo">
+    <view class="settings_container" style="width: 750rpx; height: 372rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 100rpx">
+      <!-- <view class="setting_item" bindtap="redirectToinfo" style="width: 750rpx; height: 124rpx; display: flex; box-sizing: border-box">
         <view class="left">
           <image class="setting_icon" src="../../images/icons/setting.svg" />
           <view class="setting_text">个人信息设置</view>
@@ -30,7 +35,7 @@
         </view>
         <image class="arrow_icon" src="../../images/arrow.svg" />
       </view> -->
-      <view class="setting_item">
+      <view class="setting_item" style="width: 750rpx; height: 124rpx; display: flex; box-sizing: border-box">
         <view class="left">
           <image class="setting_icon" src="../../images/icons/customer-service.svg" />
           <!-- <view class="setting_text">联系客服</view> -->
@@ -40,14 +45,16 @@
         </view>
         <image class="arrow_icon" src="../../images/arrow.svg" />
       </view>
-      <view class="setting_item" bind:tap="redirectToadmin">
+      <view class="setting_item" bind:tap="redirectToadmin" style="width: 750rpx; height: 124rpx; display: flex; box-sizing: border-box">
         <view class="left">
           <image class="setting_icon" src="../../images/icons/share.svg" />
           <view class="setting_text">后台管理</view>
         </view>
         <image class="arrow_icon" src="../../images/arrow.svg" />
       </view>
+      
     </view>
+    
   </view>
   <cloud-tip-modal showUploadTipProps="{{showUploadTip}}" />
 </view>

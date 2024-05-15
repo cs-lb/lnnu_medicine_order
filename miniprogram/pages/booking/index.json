@@ -1,7 +1,15 @@
 {
-  "usingComponents": {
-    "mp-form": "../../miniprogram_npm/weui-miniprogram/form/form",
-    "mp-cells": "../../miniprogram_npm/weui-miniprogram/cells/cells",
-    "mp-cell": "../../miniprogram_npm/weui-miniprogram/cell/cell"
-  }
+  
+  "backgroundColor": "#f6f6f6",
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#0094ff",
+  "navigationBarTitleText": "体检预约",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+
+"usingComponents": {
+  "mp-form": "../../miniprogram_npm/weui-miniprogram/form/form",
+  "mp-cells": "../../miniprogram_npm/weui-miniprogram/cells/cells",
+  "mp-cell": "../../miniprogram_npm/weui-miniprogram/cell/cell"
+}
 }

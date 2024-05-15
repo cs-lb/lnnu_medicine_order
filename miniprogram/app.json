@@ -4,7 +4,9 @@
     "pages/booking/index",
     "pages/health/health",
     "pages/user-center/index",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/event/event",
+    "page/event/event"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

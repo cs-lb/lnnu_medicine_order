@@ -33,4 +33,9 @@ Page({
       url: '/pages/goods-list/index',
     })
   },
+  login:function(){
+    wx.navigateTo({
+      url:'/pages/event/event',
+    })
+  },
 });

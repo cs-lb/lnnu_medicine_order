@@ -1,4 +1,5 @@
 /* pages/booking/index.wxss */
+
 .container {
   padding: 20rpx;
 }
@@ -25,3 +26,26 @@
 .sub-btn{
   margin-top: 20px;
 }
+.choosetime {
+  text-align: center; 
+  margin-top: 1.5ex;
+}
+.home{
+  text-align: center;
+}
+/* .text{
+  text-align: center;
+}  */
+.chosen{
+  line-height:2.5em;
+}
+.btn-area{
+  width: 100%;
+  margin-top: 0.5ex;
+  background-color: rgb(201, 201, 201);
+}
+.submit{
+  margin-top: 1.5ex;
+}
+
+

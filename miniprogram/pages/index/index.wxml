@@ -1,4 +1,7 @@
 <!--index.wxml-->
+<view class="image_container">
+<image src="https://pic3.zhimg.com/v2-927dd496682a0c630f24b47a0b555f46_1440w.jpg?source=172ae18b"  mode="widthFix"></image>
+</view>
 <view class="container">
   <view class="main">
     <view class="title font_title_1">辽师校医院体检预约系统</view>
@@ -6,4 +9,12 @@
       欢迎使用辽师校医院体检预约系统！
     </view>
   </view>
+</view>
+<!-- 公告区域 -->
+<view class="image_zone1">
+	<image src="https://hbimg.huaban.com/cfba2cd35641fa52c0ab4c9fbeee5a1d3fbea1361a40e-Ut2Wl9_fw658" mode="scaleToFill" class="image_zone" bind:tap="login"></image>
+  <view class="title font_title_12" style="font-family: 幼圆;">公告</view>
+
+
+
 </view>

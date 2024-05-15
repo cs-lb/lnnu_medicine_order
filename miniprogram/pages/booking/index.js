@@ -12,7 +12,13 @@ Page({
         chooseTime:'',
       },
       datetimeArray:[[],[]],
-      times:['8:00-9:50','10:00-11:50','12:00-13:50','14:00-15:50','16:00-17:50','18:00-19:50','20:00-21:50'],
+      times:['7:30-7:34','7:35-7:39','7:40-7:44','7:45-7:49','7:50-7:54','7:55-7:59','8:00-8:04','8:05-8:09','8:10-8:14','8:15-8:19','8:20-8:24','8:25-8:29','8:30-8:34','8:35-8:39','8:40-8:44','8:45-8:49','8:50-8:54','8:55-8:59','9:00-9:04',
+      '9:05-9:09','9:10-9:14','9:15-9:19','9:20-9:24',
+      '9:25-9:29','9:30-9:34','9:35-9:39','9:40-9:44',
+      '9:45-9:49','9:50-9:54','9:55-9:59','10:00-10:04',
+      '10:05-10:09','10:10-10:14','10:15-10:19','10:20-10:24','10:25-10:29','10:30-10:34','10:35-10:39','10:40-10:44',
+      '10:45-10:49','10:50-10:54','10:55-10:59'
+    ],
       multiIndex:[0,0],
       teacherId:0,
       teacherInfo:{},
@@ -88,14 +94,6 @@ Page({
       })
       return
     }
-    console.log("app",app.globalData.healthInfo)
-    if(app.globalData.healthInfo === null){
-      wx.showToast({
-        title: '请填写个人信息',
-        icon:'error'
-      })
-      return
-    }
     console.log(e),
     wx.cloud.callFunction({
       name:'addorder',
@@ -114,7 +112,7 @@ Page({
         }
         if(res.result.errCode === 0){
           //用户注册
-          if(!app.globalData.orderInfo.chooseTime){
+          if(!app.globalData.orderInfo){
 
             app.globalData.orderInfo.chooseTime = res.result.data.user.chooseTime
             app.globalData.orderInfo.nickName  = res.result.data.user.nickName
@@ -152,7 +150,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) { 
+  onLoad: async function (options) { 
+    await wx.cloud.callFunction({
+      name: "getData",
+      success(res) {
+        console.log("获取成功", res.result.data)
+      },
+      fail(res) {
+        console.log("获取失败", res)
+      }
+    })
+    console.log(1)
     const address = wx.getStorageSync("address")
     var datas = this.getDates(7)
     this.setData({

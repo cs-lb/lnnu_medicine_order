@@ -20,9 +20,24 @@ page {
 }
 
 .image_container {
-  margin-top: 48rpx;
+  margin-top: 0rpx;
   display: flex;
   justify-content: center;
+}
+
+.image_zone {
+  margin-top: 0rpx;
+  display: flex;
+  justify-content: center;
+  height: 200rpx;
+  z-index: 0;
+  position: absolute;
+}
+.image_zone1{
+  margin-top: 0rpx;
+  display: flex;
+  justify-content: center;
+  height: 200rpx;
 }
 
 .title {
@@ -37,10 +52,22 @@ page {
 }
 
 /* 一级标题字体 */
+.font_title_12 {
+  font-weight: 500;
+  color: #000;
+  font-size: 44rpx;
+  display: table-cell;
+  vertical-align: middle;
+  z-index: 1;
+  position:absolute;
+}
 .font_title_1 {
   font-weight: 500;
   color: #000;
-  font-size: 48rpx;
+  font-size: 32rpx;
+  display: table-cell;
+  vertical-align: middle;
+
 }
 
 /* 二级标题字体 */
@@ -170,11 +197,7 @@ page {
   margin-bottom: 48rpx;
 }
 
-.image_zone {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 48rpx;
-}
+
 
 .btn-copy {
   border-radius: 12rpx;
