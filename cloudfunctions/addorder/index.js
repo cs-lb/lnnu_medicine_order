@@ -44,6 +44,7 @@ exports.main = async (event, context) => {
       nickName:event.nickName || '', //昵称
       num:event.num, //职工号
       chooseTime:event.chooseTime, //所约定的时间
+      index:event.index, //预约次数
       openid:wxContext.OPENID, //openid
       orderTime:new Date() //完成预约时间
     }
@@ -68,6 +69,7 @@ exports.main = async (event, context) => {
         nickName:event.nickName || '', //昵称
         num:event.num, //职工号
         chooseTime:event.chooseTime, //时间
+        index:event.index, //预约次数
         openid:wxContext.OPENID, //openid
         orderTime:new Date() //注册时间
       }
@@ -85,6 +87,7 @@ exports.main = async (event, context) => {
   .field({//表示查询结果只需要返回配置项里的字段
     nickName:true,
     num:true,
+    index:true,
     chooseTime:true
   })
   .get()

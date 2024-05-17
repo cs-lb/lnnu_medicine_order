@@ -10,6 +10,7 @@ Page({
         nickName:'',
         num:'',
         chooseTime:'',
+        index:0
       },
       datetimeArray:[[],[]],
       times:['7:30-7:34','7:35-7:39','7:40-7:44','7:45-7:49','7:50-7:54','7:55-7:59','8:00-8:04','8:05-8:09','8:10-8:14','8:15-8:19','8:20-8:24','8:25-8:29','8:30-8:34','8:35-8:39','8:40-8:44','8:45-8:49','8:50-8:54','8:55-8:59','9:00-9:04',
@@ -80,6 +81,14 @@ Page({
 		// this.getflag(this.data.teacherId,this.data.chooseTime);
   },
   submitAppointment(e){
+    console.log(this.data.orderInfo.index)
+    if(this.data.orderInfo.index >= 2){
+      wx.showToast({
+        title: '预约次数已达上限',
+        icon:'none'
+      })
+      return
+    }
     if(this.data.show == false){
       wx.showToast({
         title: '还没选择时间',
@@ -100,7 +109,8 @@ Page({
       data:{
         chooseTime:this.data.chooseTime,
         nickName:app.globalData.healthInfo.nickName,
-        num:app.globalData.healthInfo.num
+        num:app.globalData.healthInfo.num,
+        index:app.globalData.orderInfo.index+1
       },
       success:res => {  
         console.log(res)
@@ -117,11 +127,13 @@ Page({
             app.globalData.orderInfo.chooseTime = res.result.data.user.chooseTime
             app.globalData.orderInfo.nickName  = res.result.data.user.nickName
             app.globalData.orderInfo.num  = res.result.data.user.num
+            app.globalData.orderInfo.index  = res.result.data.user.index
             console.log(app.globalData.orderInfo)
             this.setData({
               ['orderInfo.nickName']:app.globalData.orderInfo.nickName,
               ['orderInfo.chooseTime']:app.globalData.orderInfo.chooseTime,
               ['orderInfo.num']:app.globalData.orderInfo.num,
+              ['orderInfo.index']:app.globalData.orderInfo.index
             })
             wx.showToast({
               title: '预约成功',
@@ -133,10 +145,12 @@ Page({
             app.globalData.orderInfo.chooseTime = res.result.data.user.chooseTime
             app.globalData.orderInfo.nickName  = res.result.data.user.nickName
             app.globalData.orderInfo.num  = res.result.data.user.num
+            app.globalData.orderInfo.index  = res.result.data.user.index
             this.setData({
               ['orderInfo.nickName']:app.globalData.orderInfo.nickName,
               ['orderInfo.chooseTime']:app.globalData.orderInfo.chooseTime,
               ['orderInfo.num']:app.globalData.orderInfo.num,
+              ['orderInfo.index']:app.globalData.orderInfo.index
             })
             wx.showToast({
               title: '更新预约信息成功',
@@ -195,6 +209,7 @@ Page({
       ['orderInfo.nickName']:app.globalData.orderInfo.nickName,
       ['orderInfo.chooseTime']:app.globalData.orderInfo.chooseTime,
       ['orderInfo.num']:app.globalData.orderInfo.num,
+      ['orderInfo.index']:app.globalData.orderInfo.index,
       btnText:'更新信息'
     })
   },

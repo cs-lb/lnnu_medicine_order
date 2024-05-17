@@ -2,13 +2,13 @@
   <mp-form id="userForm" class="form">
     <mp-cells>
       <mp-cell title="姓名" class="nameForm">
-        <input type="nickname" value="{{healthInfo.nickName}}" bindinput="inputChange"/>
+        <input value="{{healthInfo.nickName}}" bindinput="inputChange"/>
       </mp-cell>
       <mp-cell title="职工号" class="heightForm">
         <input type="num" value="{{healthInfo.num}}" bindinput="inputChangenum"/>
       </mp-cell>
       <mp-cell title="手机号" class="heightForm">
-        <input type="phone" value="{{healthInfo.phone}}" bindinput="inputChangephone"/>
+        <input type="num" value="{{healthInfo.phone}}" bindinput="inputChangephone"/>
       </mp-cell>
     </mp-cells>
   </mp-form>

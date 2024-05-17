@@ -81,7 +81,7 @@ exports.main = async (event, context) => {
     .update({
       data:{
         nickName:event.nickName || '',
-        phone:event.age || '',
+        phone:event.phone || '',
         num:event.num || ''
       }
     })
@@ -97,11 +97,8 @@ exports.main = async (event, context) => {
   })
   .field({//表示查询结果只需要返回配置项里的字段
     nickName:true,
-    height:true,
-    age:true,
-    weight:true,
     num:true,
-    signTime:true,
+    phone:true,
     is_admin:true
   })
   .get()

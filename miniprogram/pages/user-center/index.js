@@ -99,7 +99,7 @@ Page({
   },
     // 跳转到后台界面
   redirectToadmin() {
-    if(app.globalData.healthInfo.is_admin != 1){
+    if(app.globalData.healthInfo.admin != 1){
       wx.showToast({
         title: '无权限',
         icon:'error'

@@ -19,21 +19,6 @@ Page({
       ['healthInfo.nickName']:e.detail.value
     })
   },
-  inputChangeHeight(e){
-    this.setData({
-      ['healthInfo.height']:e.detail.value
-    })
-  },
-  inputChangeWeight(e){
-    this.setData({
-      ['healthInfo.weight']:e.detail.value
-    })
-  },
-  inputChangeAge(e){
-    this.setData({
-      ['healthInfo.age']:e.detail.value
-    })
-  },
   inputChangenum(e){
     this.setData({
       ['healthInfo.num']:e.detail.value
@@ -46,13 +31,24 @@ Page({
   },
   //提交表单事件
   submitForm(){
-    console.log(99)
-    // if(!this.data.healthInfo.nickName && !this.data.healthInfo.num){
-    //   wx.showToast({
-    //     title: '请绑定个人信息',
-    //     icon:'error'
-    //   })
-    // }
+    // 假设 this.data.healthInfo.phone 是你要验证的电话号码
+let phone = parseInt(this.data.healthInfo.phone);
+console.log(phone)
+// 正则表达式规则，用于匹配常见的电话号码格式，例如：123-456-7890 或 1234567890
+// 你可以根据需要调整正则表达式以匹配特定格式的电话号码
+
+// 测试电话号码是否符合正则表达式规则
+if (/^1[3|4|5|7|8][0-9]\d{8}$/.test(phone)) {
+  // 电话号码格式正确
+  console.log('电话号码格式正确');
+} else {
+  // 电话号码格式不正确，弹出提示
+  wx.showToast({
+    title: '电话号码格式不正确',
+    icon: 'none'
+  });
+  return 
+}
     wx.cloud.callFunction({
       name:'getHealth',
       data:{
@@ -89,6 +85,9 @@ Page({
             wx.showToast({
               title: '更新信息成功',
               icon:'success'
+            })
+            wx.switchTab({
+              url: '/pages/booking/index',
             })
           }
         }
