@@ -1,0 +1,61 @@
+/* 隐私保护指引页面的全局容器样式 */
+.container {
+  padding: 20px;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+/* 标题样式 */
+.title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 章节容器样式 */
+.section {
+  margin-bottom: 30px;
+}
+
+/* 章节标题样式 */
+.section-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* 章节内容样式 */
+.section-content {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* 联系方式容器样式 */
+.contact-info {
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+/* 联系方式标题样式 */
+.contact-info .section-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* 联系方式内容样式 */
+.contact-info .section-content {
+  font-size: 16px;
+  color: #333;
+}
+.paragraph {
+  font-size: 16px;
+  color: #333;
+}
+
+.line-break {
+  display: block; /* 使子view元素表现为块级元素来实现换行 */
+}
+
+/* 可以添加更多样式类来美化页面，如链接样式、列表样式等 */

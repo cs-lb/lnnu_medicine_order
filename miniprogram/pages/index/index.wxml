@@ -4,14 +4,21 @@
 </view>
 <view class="container">
   <view class="main">
-    <view class="title font_title_1">辽师校医院体检预约系统</view>
-    <view class="sub_title">
-      欢迎使用辽师校医院体检预约系统！
-    </view>
+    <view class="title font_title_1">欢迎使用辽师校医院体检预约系统！</view>
+    <view class="title font_title_1">门诊部位置导航 ：辽宁师范大学-黄河路校区北院（第一学生食堂前/黄河路856号）</view>
+    <!-- 定义nav导航方法 -->
+    <button bindtap="nav" type="primary">
+      <view>
+        <text>点击导航</text>
+      </view>
+      </button>
+
   </view>
 </view>
 <!-- 公告区域 -->
-<view class="image_zone1">
+<view class="image_zone1" style="margin-top: 50rpx;">
 	<image src="https://hbimg.huaban.com/cfba2cd35641fa52c0ab4c9fbeee5a1d3fbea1361a40e-Ut2Wl9_fw658" mode="scaleToFill" class="image_zone" bind:tap="login"></image>
   <view class="title font_title_12" >用户须知</view>
 </view>
+
+<button bindtap="tobooking" style="width:400rpx; margin-top: 50rpx;" type="primary">教工体检超声预约</button>

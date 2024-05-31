@@ -56,7 +56,20 @@ Page({
       }
     })
   },
-
+  tobooking(){
+    wx.switchTab({
+      url: '/pages/booking/index',
+    })
+  },
+  nav: function () {  
+    wx.openLocation({
+      latitude:38.91977597465996,	//维度
+      longitude: 121.56472016785429, //经度
+      name: "辽宁师范大学校医院",	//目的地定位名称
+      scale: 15,	//缩放比例
+      address: "辽宁师范大学-黄河路校区北院（第一学生食堂前/黄河路856号）"	//导航详细地址
+    })
+  },
   discoverCloud() {
     wx.switchTab({
       url: '/pages/examples/index',

@@ -28,6 +28,13 @@
           "pathName": "pages/user-center/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "预约",
+          "pathName": "pages/appointment_date/appointment_date",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

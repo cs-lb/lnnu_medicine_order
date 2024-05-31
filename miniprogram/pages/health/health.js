@@ -10,7 +10,8 @@ Page({
       num:' ',
       phone:' '
     },
-    btnText:'绑定信息'
+    btnText:'绑定信息',
+    isExamine:"false"
   },
 
   //输入框双向绑定
@@ -27,6 +28,11 @@ Page({
   inputChangephone(e){
     this.setData({
       ['healthInfo.phone']:e.detail.value
+    })
+  },
+  toyinsi(){
+    wx.navigateTo({
+      url: '/pages/yinsi/yinsi',
     })
   },
   //提交表单事件
@@ -98,6 +104,9 @@ if (/^1[3|4|5|7|8][0-9]\d{8}$/.test(phone)) {
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      isExamine: app.globalData.isExamine,
+    })
   },
 
   /**

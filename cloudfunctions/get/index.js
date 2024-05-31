@@ -23,12 +23,14 @@ exports.main = async(event, context) => {
     let department;
     let sex;
     for (let key in userdata) {
+      console.log(userdata[key])
       await cloud.database().collection('healthInfo')
       .where({
         nickName:userdata[key].nickName
       })
       .get()
       .then(res=>{
+        console.log("res:",res)
         phone = res.data[0].phone
       })
 

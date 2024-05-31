@@ -4,6 +4,15 @@ const wxp = wx.p ={}
 promisifyAll(wx,wxp)
 App({
   onLaunch: function () {
+    var nowTime  = Date.parse(new Date())
+    console.log(nowTime)
+    
+    var delineTime = Date.parse('2024-5-30 12:00:00'.replace(/-/g,'/'))
+    // console.log(nowTime > delineTime)
+    console.log(delineTime)
+    if(nowTime > delineTime) {
+      this.globalData.isExamine = false
+    }
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     } else {
@@ -108,5 +117,6 @@ App({
         num:'',
         index:0
       },
+      isExamine: true,
   },
 });

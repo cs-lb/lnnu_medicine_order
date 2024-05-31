@@ -1,6 +1,6 @@
 <view class="choosetime">
   <!-- <text>选择时间：</text> -->
-  <picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{datetimeArray}}">
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="dayChange" value="{{multiIndex}}" range="{{datetimeArray}}">
   <!-- <view><text class="text2" decode="true">&ensp;</text></view> -->
     <text class="text">选择时间：</text>
 

@@ -18,7 +18,7 @@
           </mp-cell>
         </mp-cells>
       </mp-form>
-      <button bindtap="submitForm" class="sub-btn">{{btnText}}</button>
+      <button bindtap="submitForm" class="sub-btn" type="default">{{btnText}}</button>
     </view>
     <view class="settings_container" style="width: 750rpx; height: 372rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 100rpx">
       <!-- <view class="setting_item" bindtap="redirectToinfo" style="width: 750rpx; height: 124rpx; display: flex; box-sizing: border-box">

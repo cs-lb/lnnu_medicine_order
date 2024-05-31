@@ -6,6 +6,7 @@
     "pages/user-center/index",
     "pages/admin/admin",
     "pages/event/event",
+    "pages/yinsi/yinsi",
     "page/event/event"
   ],
   "window": {

@@ -12,6 +12,13 @@ Page({
         chooseTime:'',
         index:0
       },
+      days:["2024-06-05", "2024-06-06", "2024-06-07", "2024-06-08", "2024-06-09",
+      "2024-06-10", "2024-06-11", "2024-06-12", "2024-06-13", "2024-06-14",
+      "2024-06-15", "2024-06-16", "2024-06-17", "2024-06-18", "2024-06-19",
+      "2024-06-20", "2024-06-21", "2024-06-22", "2024-06-23", "2024-06-24",
+      "2024-06-25", "2024-06-26", "2024-06-27", "2024-06-28", "2024-06-29",
+      "2024-06-30", "2024-07-01", "2024-07-02", "2024-07-03"],
+      choosedTimeArray:[],
       datetimeArray:[[],[]],
       times:['7:30-7:34','7:35-7:39','7:40-7:44','7:45-7:49','7:50-7:54','7:55-7:59','8:00-8:04','8:05-8:09','8:10-8:14','8:15-8:19','8:20-8:24','8:25-8:29','8:30-8:34','8:35-8:39','8:40-8:44','8:45-8:49','8:50-8:54','8:55-8:59','9:00-9:04',
       '9:05-9:09','9:10-9:14','9:15-9:19','9:20-9:24',
@@ -80,7 +87,8 @@ Page({
     // console.log(this.data.chooseTime);
 		// this.getflag(this.data.teacherId,this.data.chooseTime);
   },
-  submitAppointment(e){
+  submitAppointment: async function(e){
+    let that = this
     console.log(this.data.orderInfo.index)
     if(this.data.orderInfo.index >= 2){
       wx.showToast({
@@ -157,31 +165,118 @@ Page({
               icon:'success'
             })
           }
+          wx.cloud.callFunction({
+            name: "getData",
+            success(res) {
+              console.log("获取成功", res.result.data)
+              let choosedTimeArray = res.result.data.map(object => object.chooseTime);
+              that.setData({
+                choosedTimeArray:choosedTimeArray
+              })
+              let datas = that.data.days
+              let newtimedata = app.globalData.orderInfo.chooseTime
+              let targetDate = newtimedata.split(' ')[0];
+              console.log(targetDate)
+              // 使用 filter 方法筛选出特定日期的元素
+              let filteredDateTimeSlots = choosedTimeArray.filter(slot => {
+                let datePart = slot.split(' ')[0]; // 提取日期部分
+                return datePart === targetDate; // 检查是否是目标日期
+              });
+      
+              // 使用 map 方法提取时间
+              let timesArray = filteredDateTimeSlots.map(slot => {
+                let timePart = slot.split(' ')[1]; // 提取时间部分
+                return timePart; // 返回时间
+              });
+              let updatedTimes = that.data.times.filter(time => {
+                // 检查当前时间是否不在 timesArray 中
+                return !timesArray.includes(time);
+              });
+              that.setData({
+                datetimeArray:[datas,updatedTimes]
+              })
+            },
+            fail(res) {
+              console.log("获取失败", res)
+            }
+          })
+
         }
       }
     })
+  },
+  dayChange(e){
+    console.log(e.detail)
+    let col = e.detail.column; // 获取选择的日期
+    let v = e.detail.value;
+    let datas = this.data.days
+    if(col == 0){
+      // 目标日期
+      let targetDate = datas[v];
+
+      // 使用 filter 方法筛选出特定日期的元素
+      let filteredDateTimeSlots = this.data.choosedTimeArray.filter(slot => {
+        let datePart = slot.split(' ')[0]; // 提取日期部分
+        return datePart === targetDate; // 检查是否是目标日期
+      });
+
+      // 使用 map 方法提取时间
+      let timesArray = filteredDateTimeSlots.map(slot => {
+        let timePart = slot.split(' ')[1]; // 提取时间部分
+        return timePart; // 返回时间
+      });
+      let updatedTimes = this.data.times.filter(time => {
+        // 检查当前时间是否不在 timesArray 中
+        return !timesArray.includes(time);
+      });
+      console.log(timesArray); // 输出: ["7:30-7:34"]
+      this.setData({
+        datetimeArray:[datas,updatedTimes]
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) { 
+    let that = this
     await wx.cloud.callFunction({
       name: "getData",
       success(res) {
         console.log("获取成功", res.result.data)
+        let choosedTimeArray = res.result.data.map(object => object.chooseTime);
+        that.setData({
+          choosedTimeArray:choosedTimeArray
+        })
+        let datas = that.data.days
+        let targetDate = datas[0];
+        console.log(choosedTimeArray)
+        // 使用 filter 方法筛选出特定日期的元素
+        let filteredDateTimeSlots = choosedTimeArray.filter(slot => {
+          let datePart = slot.split(' ')[0]; // 提取日期部分
+          return datePart === targetDate; // 检查是否是目标日期
+        });
+
+        // 使用 map 方法提取时间
+        let timesArray = filteredDateTimeSlots.map(slot => {
+          let timePart = slot.split(' ')[1]; // 提取时间部分
+          return timePart; // 返回时间
+        });
+        let updatedTimes = that.data.times.filter(time => {
+          // 检查当前时间是否不在 timesArray 中
+          return !timesArray.includes(time);
+        });
+        that.setData({
+          datetimeArray:[datas,updatedTimes]
+        })
       },
       fail(res) {
         console.log("获取失败", res)
       }
     })
     console.log(1)
-    const address = wx.getStorageSync("address")
-    var datas = this.getDates(7)
-    this.setData({
-      datetimeArray:[datas,this.data.times],
-      address
-    })
-    console.log(this.data.datetimeArray);
+
+  
     // let chooseTime = this.data.datetimeArray[0][0]+" "+this.data.datetimeArray[1][0]
     // this.setData({
     //   chooseTime
@@ -214,38 +309,4 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })
